@@ -1,0 +1,1 @@
+select distinct zipcode, CONCAT('INSERT INTO consultacep (Cep) Values (''', zipcode, ''')') from serviceorder 
