@@ -1,12 +1,14 @@
-﻿using consulta_cep_core.Models;
-using System;
+﻿using consulta_cep_core.Data;
+using consulta_cep_core.Models;
 using System.Collections.Generic;
-using System.Text;
 
-namespace consulta_cep_core.Controller
+namespace consulta_cep_core.Business
 {
-    class ConsultaCepController
+    public class ConsultaCepController
     {
-        
+        public List<ConsultaCep> GetAllPendingProcess()
+        {
+            return new ConsultaCepRepository().GetAllPendingProcess();
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace consulta_cep_core.Data
                 if (con.State == ConnectionState.Closed)
                     con.Open();
 
-                lCep = con.Query<ConsultaCep>("xxxxx", null, commandType: CommandType.StoredProcedure).ToList();
+                lCep = con.Query<ConsultaCep>("GetAllListCeps", null, commandType: CommandType.StoredProcedure).ToList();
             }
 
             return lCep;

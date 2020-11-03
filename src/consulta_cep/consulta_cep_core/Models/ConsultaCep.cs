@@ -5,7 +5,7 @@ namespace consulta_cep_core.Models
     /// <summary>
     /// Modelo baseado no retorno da API Via Cep
     /// </summary>
-    class ConsultaCep
+    public class ConsultaCep
     {
         public int Id { get; set; }
         public string Cep { get; set; }
