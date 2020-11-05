@@ -38,12 +38,19 @@ namespace consulta_cep_console
                 
                 Console.Write($" {respCep.Uf} - {respCep.Localidade} - {respCep.Logradouro}");
 
-                int rows = new ConsultaCepController().SaveCepProcessed(respCep);
-
-                if(rows > 0)
-                    Console.Write(" >>> Processado");
+                if (respCep.Cep is null)
+                {
+                    Console.Write(" >>> CEP INVÁLIDO!!!");
+                }
                 else
-                    Console.Write(" >>> Pendente");
+                {
+                    int rows = new ConsultaCepController().SaveCepProcessed(respCep);
+
+                    if (rows > 0)
+                        Console.Write(" >>> Processado");
+                    else
+                        Console.Write(" >>> Pendente");
+                }
             }
         }
     }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace consulta_cep_core.Utils
+﻿namespace consulta_cep_core.Utils
 {
     public class Util
     {

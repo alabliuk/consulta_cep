@@ -6,6 +6,15 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	SELECT Cep FROM ConsultaCep
+	SELECT 
+		Cep 
+	FROM 
+		ConsultaCep
+	WHERE
+		(Cep <> '' OR Cep is not null)
+		AND 
+			((DATEDIFF(MONTH, LastUpdate, GETDATE()) > 6)
+				OR
+			LastUpdate IS NULL)
 END
 GO
