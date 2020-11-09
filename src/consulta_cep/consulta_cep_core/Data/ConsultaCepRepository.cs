@@ -49,5 +49,22 @@ namespace consulta_cep_core.Data
 
             return rows;
         }
+
+        public int UpdateCepInvalid(string cep)
+        {
+            int rows = 0;
+            using (IDbConnection con = new SqlConnection(ConnString))
+            {
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                var vParams = new DynamicParameters();
+                vParams.Add("@Cep", cep);
+
+                rows = con.QuerySingle<int>("UpdateCepInvalid", vParams, commandType: CommandType.StoredProcedure);
+            }
+
+            return rows;
+        }
     }
 }

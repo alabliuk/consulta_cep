@@ -27,6 +27,7 @@ namespace consulta_cep_console
             Console.WriteLine("==========================================================");
 
             var CepsPending = new ConsultaCepController().GetAllPendingProcess();
+            ConsultaCep respCep = new ConsultaCep();
 
             Console.WriteLine($"\nCEPS PENDENTES: {CepsPending.Count}");
 
@@ -34,13 +35,22 @@ namespace consulta_cep_console
             {
                 Console.Write($"\n{DateTime.Now} - Processando CEP: {cep} || ");
 
-                ConsultaCep respCep = new ConsultaCepController().ProcessCep(cep);
-                
+                try
+                {
+                    respCep = new ConsultaCepController().ProcessCep(cep);
+                }
+                catch (Exception ex)
+                {
+                    Console.Write($" >>> Request Exception => {ex.Message}");
+                }
+
+
                 Console.Write($" {respCep.Uf} - {respCep.Localidade} - {respCep.Logradouro}");
 
                 if (respCep.Cep is null)
                 {
                     Console.Write(" >>> CEP INVÁLIDO!!!");
+                    new ConsultaCepController().UpdateCepInvalid(cep);
                 }
                 else
                 {

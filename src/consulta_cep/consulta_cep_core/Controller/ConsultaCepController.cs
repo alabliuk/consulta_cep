@@ -27,5 +27,10 @@ namespace consulta_cep_core.Controller
         {
             return new ConsultaCepRepository().SaveCepProcessed(cp);
         }
+
+        public int UpdateCepInvalid(string cep)
+        {
+            return new ConsultaCepRepository().UpdateCepInvalid(cep);
+        }
     }
 }
